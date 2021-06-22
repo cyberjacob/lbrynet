@@ -19,6 +19,7 @@ VOLUME ["/home/${user}/.lbrynet", "/home/${user}/.lbryum", "/home/${user}/Downlo
 
 # Create a user to run the daemon as
 RUN useradd --home-dir "/home/${user}" "${user}" \
+  && mkdir -p /home/${user} \
   && chown -R "${user}:${user}" "/home/${user}"
 
 COPY entrypoint.sh /usr/local/bin
